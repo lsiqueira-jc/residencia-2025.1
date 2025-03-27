@@ -19,7 +19,7 @@ use App\Http\Controllers\ExemploController;
 // GET |POST | PUT| DELETE
 
 Route::get('/',[ExemploController::class,'index']);
-Route::post('/',[ExemploController::class,'cadastrar']);
+// Route::post('/',[ExemploController::class,'cadastrar']);
 
 
 // Route::get('/', function () {
