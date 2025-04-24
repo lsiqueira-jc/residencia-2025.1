@@ -7,6 +7,27 @@ use App\Http\Controllers\Tokencontroller;
 use App\Http\Controllers\ExemploController;
 use App\Http\Controllers\ComentarioController;
 
+use App\Http\Controllers\ProdutoController;
+
+
+
+
+Route::get('/produtos',[ProdutoController::class , 'listar'] );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
