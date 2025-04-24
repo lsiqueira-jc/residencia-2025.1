@@ -20,6 +20,7 @@ class ComentarioController extends Controller
 
     public function comentar(Request $request){
         $comentario = $request->input('comentario');// recebendo os dados do front-end
+        // $post_id = $request->input('post_id');//??????? recebendo os dados do front-end
 
         //Enviar para aprovação da IA{}
         $statusDoComentario = $this->aprovarComentario($comentario);
@@ -38,65 +39,67 @@ class ComentarioController extends Controller
 
     }
 
-    public function deletar($id)
-    {
-        $comentario = Comentario::find($id);
+        //Rotas Privadas
 
-        if (!$comentario) {
-            return response()->json([
-                'message' => 'Comentário não encontrado!'
-            ], 404);
+        private function aprovarComentario($comentario)
+        {
+            // Aqui você pode implementar a lógica para aprovar o comentário
+            return "aprovado"; // ou "rejeitado" dependendo da lógica de aprovação
+
         }
 
-        $comentario->delete();
+    // public function deletar($id)
+    // {
+    //     $comentario = Comentario::find($id);
 
-        return response()->json([
-            'message' => 'Comentário deletado com sucesso!'
-        ], 200);
-    }
+    //     if (!$comentario) {
+    //         return response()->json([
+    //             'message' => 'Comentário não encontrado!'
+    //         ], 404);
+    //     }
 
-    public function buscarPorId($id)
-    {
-        $comentario = Comentario::find($id);
+    //     $comentario->delete();
 
-        if (!$comentario) {
-            return response()->json([
-                'message' => 'Comentário não encontrado!'
-            ], 404);
-        }
+    //     return response()->json([
+    //         'message' => 'Comentário deletado com sucesso!'
+    //     ], 200);
+    // }
 
-        return response()->json([
-            'data' => $comentario
-        ], 200);
-    }
+    // public function buscarPorId($id)
+    // {
+    //     $comentario = Comentario::find($id);
 
-    public function atualizar(Request $request, $id)
-    {
-        $comentario = Comentario::find($id);
+    //     if (!$comentario) {
+    //         return response()->json([
+    //             'message' => 'Comentário não encontrado!'
+    //         ], 404);
+    //     }
 
-        if (!$comentario) {
-            return response()->json([
-                'message' => 'Comentário não encontrado!'
-            ], 404);
-        }
+    //     return response()->json([
+    //         'data' => $comentario
+    //     ], 200);
+    // }
 
-        $comentario->comentario = $request->input('comentario');
-        $comentario->save();
+    // public function atualizar(Request $request, $id)
+    // {
+    //     $comentario = Comentario::find($id);
 
-        return response()->json([
-            'message' => 'Comentário atualizado com sucesso!',
-            'data' => $comentario
-        ], 200);
-    }
+    //     if (!$comentario) {
+    //         return response()->json([
+    //             'message' => 'Comentário não encontrado!'
+    //         ], 404);
+    //     }
+
+    //     $comentario->comentario = $request->input('comentario');
+    //     $comentario->save();
+
+    //     return response()->json([
+    //         'message' => 'Comentário atualizado com sucesso!',
+    //         'data' => $comentario
+    //     ], 200);
+    // }
 
 
-    //Rotas Privadas
 
-    private function aprovarComentario($comentario)
-    {
-        // Aqui você pode implementar a lógica para aprovar o comentário
-        return "aprovado"; // ou "rejeitado" dependendo da lógica de aprovação
-
-    }
 
 }
