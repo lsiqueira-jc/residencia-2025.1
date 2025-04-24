@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comentario;
+use App\Http\Requests\ComentarioRequest;
 
 class ComentarioController extends Controller
 {
@@ -18,7 +19,7 @@ class ComentarioController extends Controller
 
     }
 
-    public function comentar(Request $request){
+    public function comentar(ComentarioRequest $request){
         $comentario = $request->input('comentario');// recebendo os dados do front-end
         // $post_id = $request->input('post_id');//??????? recebendo os dados do front-end
 
